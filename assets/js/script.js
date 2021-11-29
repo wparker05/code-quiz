@@ -102,9 +102,27 @@ var scoreSlide = function(){
     var getScore = document.createElement('p');
     getScore.textContent = "Your score is " ;
     score.appendChild(getScore);
+    var form1 = document.createElement('form');
+    var textBox = document.createElement('input');
+    textBox.setAttribute('type', 'text');
+    textBox.setAttribute('id', 'scorebox');
+    var textbtn = document.createElement('button');
+    textbtn.className = 'scorePage';
+    textbtn.textContent = 'Submit';
+    score.appendChild(form1);
+    form1.appendChild(textBox);
+    form1.appendChild(textbtn);
+
+    var scoreP = document.querySelector('.scorePage');
+    scoreP.addEventListener('click', function(event){
+        event.preventDefault();
+        location.replace('file:///C:/Users/wprog/Bootcamp/Homework/code-quiz/highscore.html');
+    });
 }
 
 scoreSlide();
+
+
 
 
 btnEl.addEventListener('click', startQuiz);
