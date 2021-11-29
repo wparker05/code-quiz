@@ -8,16 +8,25 @@
     <title>Document</title>
 </head>
 <body>
-    <head>
+    <header>
         <nav>
             <a href="highscore.html">View Highscore</a>
-            <span id="timer"></span>
         </nav>
-    </head>
+        <p id="timer"></p>
+    </header>
     <div id="start-quiz">
         <h1>Coding Quiz Challenge</h1>
         <p>Try to anser the following code-related questions with the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds.</p>
         <button id="start-btn">Start Quiz</button>
+    </div>
+    <div id="questions">
+        <p id=qtn></p>
+        <ol>
+            <li id="choice1" class="choices"></li>
+            <li id="choice2" class="choices"></li>
+            <li id="choice3" class="choices"></li>
+            <li id="choice4" class="choices"></li>
+        </ol>
     </div>
 <script src="assets/js/script.js"></script>
 </body>

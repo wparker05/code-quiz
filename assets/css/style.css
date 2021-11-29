@@ -1,0 +1,30 @@
+header {
+    padding: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+p {
+    margin: 0;
+    padding: 0 15px;
+}
+
+nav a {
+    padding: 0 15px;
+    text-decoration: none;
+}
+
+#start-quiz{
+    text-align:center;
+}
+
+.start-quiz {
+    display:none;
+}
+
+#questions {
+    display:none;
+   
+}
+
