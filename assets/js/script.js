@@ -56,7 +56,6 @@ var takeQuiz = function() {
 
         var qtn = document.createElement('p');
         qtn.textContent = questions[x].question;
-        qtn.className = "para";
         questionSlide.appendChild(qtn);
         var num = document.createElement('ol');
         qtn.appendChild(num);
@@ -77,9 +76,6 @@ var selectChoice = function(event) {
         var selected = event.target.innerHTML;
         if(selected === questions[x].answer){
             console.log("correct")
-            var p = document.querySelector('para');
-            p.style.display= 'none';
-            takeQuiz();
         } else {
             console.log('incorrect');
             timer -= 10;
@@ -93,8 +89,6 @@ var selectChoice = function(event) {
         }
             
         x++;
-        var removeEl = document.querySelector('p');
-        removeEl.remove();
         takeQuiz();
         
     }
