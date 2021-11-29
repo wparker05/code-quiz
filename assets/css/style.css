@@ -25,6 +25,13 @@ nav a {
 
 #questions {
     display:none;
-   
+    justify-content: center;
 }
 
+
+#score{
+    display:none;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
