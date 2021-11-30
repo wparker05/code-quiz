@@ -23,7 +23,7 @@ var firstSlide = document.querySelector('#start-quiz');
 var questionSlide = document.querySelector('#questions');
 var score = document.querySelector("#score");
 
-timeEl.textContent = "Time: " + timer;
+timeEl.textContent = "Time: " + timer || '';
 
 
 
@@ -34,9 +34,9 @@ var startQuiz = function(){
         timer--;
         timeEl.textContent = "Time: " + timer;
 
-        if(x === questions.length - 1){
-             clearInterval(quizTimer);
-            
+        if(x === questions.length){
+            localStorage.setItem("timer", JSON.stringify(timer));
+             clearInterval(quizTimer);  
         }
 
         if(timer === 0){
@@ -48,12 +48,14 @@ var startQuiz = function(){
 
     firstSlide.classList.add('start-quiz');
     questionSlide.style.display = "flex";
+    
 }
 
 
 
 var takeQuiz = function() { 
-
+     questionSlide.innerHTML = '';
+        if (x < questions.length){
         var qtn = document.createElement('p');
         qtn.textContent = questions[x].question;
         questionSlide.appendChild(qtn);
@@ -65,7 +67,7 @@ var takeQuiz = function() {
                 opt.textContent = choice;
                 num.appendChild(opt);
             }
-      
+      }
 }
 
 takeQuiz();
@@ -83,9 +85,7 @@ var selectChoice = function(event) {
         
         if( x === questions.length -1){
             questionSlide.style.display = "none";
-            score.style.display = "flex";
-            
-            
+            score.style.display = "flex"; 
         }
             
         x++;
@@ -100,7 +100,8 @@ var scoreSlide = function(){
     scoreTitle.textContent = 'Score';
     score.appendChild(scoreTitle);
     var getScore = document.createElement('p');
-    getScore.textContent = "Your score is " ;
+    var total =  localStorage.getItem("timer");
+    getScore.textContent = "Your score is " + total  ;
     score.appendChild(getScore);
     var form1 = document.createElement('form');
     var textBox = document.createElement('input');
@@ -116,6 +117,15 @@ var scoreSlide = function(){
     var scoreP = document.querySelector('.scorePage');
     scoreP.addEventListener('click', function(event){
         event.preventDefault();
+        var scoreBox = document.querySelector('#scorebox');
+        var scoreObj = {
+            initials:  scoreBox.value.trim(),
+            timer: total
+        }
+
+        localStorage.setItem("scoreObj", JSON.stringify(scoreObj));
+        
+
         location.replace('file:///C:/Users/wprog/Bootcamp/Homework/code-quiz/highscore.html');
     });
 }
