@@ -23,7 +23,7 @@ var firstSlide = document.querySelector('#start-quiz');
 var questionSlide = document.querySelector('#questions');
 var score = document.querySelector("#score");
 
-timeEl.textContent = "Time: " + timer || '';
+timeEl.textContent = "Time: " + timer;
 
 
 
@@ -34,14 +34,16 @@ var startQuiz = function(){
         timer--;
         timeEl.textContent = "Time: " + timer;
 
+        if(x === questions.length){
+            clearInterval(quizTimer);  
+            localStorage.setItem("timer", JSON.stringify(timer));
+       }
+
         if(timer === 0){
             clearInterval(quizTimer);
         } 
 
-        if(x === questions.length){
-            localStorage.setItem("timer", JSON.stringify(timer));
-             clearInterval(quizTimer);  
-        }
+       
 
     
        },1000);
@@ -101,7 +103,8 @@ var scoreSlide = function(){
     scoreTitle.textContent = 'Score';
     score.appendChild(scoreTitle);
     var getScore = document.createElement('p');
-    var total =  localStorage.getItem("timer");
+    var total =  JSON.parse(localStorage.getItem("timer"));
+    console.log(total);
     getScore.textContent = "Your score is " + total  ;
     score.appendChild(getScore);
     var form1 = document.createElement('form');

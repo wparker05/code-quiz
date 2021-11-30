@@ -12,6 +12,7 @@ table.appendChild(th2)
 var back = document.querySelector('#back');
 var clear = document.querySelector('#clear');
 var arr = JSON.parse(localStorage.getItem("scoreObj")|| {scores: []});
+
 // console.log(arr.scores.length);
 
 for(var x = 0; x < arr.scores.length; x++){
@@ -19,8 +20,8 @@ for(var x = 0; x < arr.scores.length; x++){
     tr.textContent= arr.scores[x].initials;
     var tr2 = document.createElement('tr');
     tr2.textContent = arr.scores[x].timer;
-    table.appendChild(tr);
-    table.appendChild(tr2);
+    th.appendChild(tr);
+    th2.appendChild(tr2);
 }
 
 
@@ -30,6 +31,8 @@ back.addEventListener('click', function(){
 })
 
 clear.addEventListener('click', function(){
+   
     localStorage.clear();
     location.reload();
+     
 })
