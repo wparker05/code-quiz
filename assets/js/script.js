@@ -11,7 +11,7 @@ answer: "quotes"
 {
 question: "A very useful tool used during development and debugging for printing content to the debugger is: ",
 choices: ["JavaScript", "terminal/bash","for loops", "console log"],
-answer: "JavaScript"
+answer: "terminal/bash"
 }
 ];
 
@@ -34,15 +34,16 @@ var startQuiz = function(){
         timer--;
         timeEl.textContent = "Time: " + timer;
 
+        if(timer === 0){
+            clearInterval(quizTimer);
+        } 
+
         if(x === questions.length){
             localStorage.setItem("timer", JSON.stringify(timer));
              clearInterval(quizTimer);  
         }
 
-        if(timer === 0){
-            clearInterval(quizTimer);
-        } 
-
+    
        },1000);
 
 
@@ -123,10 +124,14 @@ var scoreSlide = function(){
             timer: total
         }
 
-        localStorage.setItem("scoreObj", JSON.stringify(scoreObj));
-        
+        var allscores = localStorage.getItem('scoreObj') || JSON.stringify({scores: []});
+        var prev = JSON.parse(allscores);
+            prev.scores.push(scoreObj);
 
-        location.replace('file:///C:/Users/wprog/Bootcamp/Homework/code-quiz/highscore.html');
+        localStorage.setItem('scoreObj', JSON.stringify(prev));
+    
+
+        location.replace('./highscore.html');
     });
 }
 

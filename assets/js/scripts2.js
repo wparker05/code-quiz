@@ -1,18 +1,24 @@
 var scoreTable = document.querySelector('#table');
 var table = document.createElement('table');
+var tr = document.createElement('tr');
+var th = document.createElement('th');
+th.textContent = "Initials";
+var th2 = document.createElement('th');
+th2.textContent = "Score";
+scoreTable.appendChild(table);
+table.appendChild(th);
+table.appendChild(th2)
+
 var back = document.querySelector('#back');
-var arr = JSON.parse(localStorage.getItem("scoreObj")) || [];
-console.log(arr)
+var arr = JSON.parse(localStorage.getItem("scoreObj")|| {scores: []});
+// console.log(arr.scores.length);
 
-
-// var len =  JSON.parse(localStorage.getItem("scoreObj"));
-// console.log(len);
-
-
-
+for(var x = 0; x < arr.scores.length; x++){
+    var tablerow
+}
 
 
 
 back.addEventListener('click', function(){
-    location.replace('file:///C:/Users/wprog/Bootcamp/Homework/code-quiz/index.html');
+    location.replace('./index.html');
 })

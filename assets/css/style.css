@@ -41,6 +41,12 @@ nav a {
     text-align: justify;
 }
 
+ 
+
+  ol li:hover {
+    background:black;
+    color:white;
+}
 
 #score{
     display:none;
@@ -62,4 +68,19 @@ nav a {
     width:100px;
     height:30px;
     margin: 0 15px;
+}
+
+#table {
+    display:flex;
+    justify-content: center;
+    margin-bottom: 50px;
+
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th {
+    padding: 20px
 }
