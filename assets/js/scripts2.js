@@ -32,7 +32,7 @@ back.addEventListener('click', function(){
 
 clear.addEventListener('click', function(){
    
-    localStorage.clear();
+     localStorage.setItem('scoreObj', JSON.stringify({scores: []}));
     location.reload();
      
 })
